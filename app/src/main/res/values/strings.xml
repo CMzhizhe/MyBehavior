@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyApplicationBehavior</string>
+    <string name="behavior_sample_title">com.example.myapplicationbehavior.SampleTitleBehavior</string>
+    <string name="behavior_sample_title2">com.example.myapplicationbehavior.HeaderBehavior</string>
+    <string name="behavior_sample_title3">com.example.myapplicationbehavior.RecyclerBehavior</string>
+
+
+    <string name="behavior_sample_title4">com.example.myapplicationbehavior.thired.behavior.ThiredTitleBehavior</string>
+    <string name="behavior_sample_title5">com.example.myapplicationbehavior.thired.behavior.ThiredRecyclerBehavior</string>
+    <string name="behavior_sample_framelayout_behavior">com.example.myapplicationbehavior.thired.behavior.FrameHeaderBehavior</string>
+
+</resources>

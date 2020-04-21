@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:background="#ff0000"
+        android:text="我是标题部分"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_behavior="@string/behavior_sample_title2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_list"
+        app:layout_behavior="@string/behavior_sample_title3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

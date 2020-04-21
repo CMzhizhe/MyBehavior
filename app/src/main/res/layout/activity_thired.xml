@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinatorlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout
+        app:layout_behavior="@string/behavior_sample_framelayout_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.example.myapplicationbehavior.thired.ThiredLinLayout
+            android:id="@+id/ll_thired"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+            <ImageView
+                android:src="@drawable/icon_b"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.example.myapplicationbehavior.thired.ThiredLinLayout>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_list"
+        app:layout_behavior="@string/behavior_sample_title5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff0000"
+        android:gravity="center"
+        android:text="Hello World"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:layout_behavior="@string/behavior_sample_title4" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
