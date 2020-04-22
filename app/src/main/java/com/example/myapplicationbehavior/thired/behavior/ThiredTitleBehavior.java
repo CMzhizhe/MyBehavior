@@ -9,15 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.example.myapplicationbehavior.R;
+
 public class ThiredTitleBehavior extends CoordinatorLayout.Behavior<TextView> {
     private String TAG = ThiredTitleBehavior.class.getSimpleName();
-    private boolean isFirstLoad = true;
+    private Context mContext;
 
     public ThiredTitleBehavior() {
     }
 
     public ThiredTitleBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
     }
 
     @Override
@@ -27,11 +30,13 @@ public class ThiredTitleBehavior extends CoordinatorLayout.Behavior<TextView> {
 
     @Override
     public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull TextView child, @NonNull View dependency) {
-        if (isFirstLoad){
-            isFirstLoad = false;
-            child.setY(-child.getHeight());
-        }
+        FrameLayout frameLayout = (FrameLayout) dependency;
+        float translatyY = -(1 - frameLayout.getTranslationY() / getHeaderOffset()) * child.getHeight();
+        child.setTranslationY(translatyY);
         return true;
     }
 
+    private int getHeaderOffset(){
+        return mContext.getResources().getDimensionPixelOffset(R.dimen.header_offset);
+    }
 }

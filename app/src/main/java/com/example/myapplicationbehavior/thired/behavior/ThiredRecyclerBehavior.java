@@ -2,6 +2,7 @@ package com.example.myapplicationbehavior.thired.behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -12,13 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplicationbehavior.R;
 
 public class ThiredRecyclerBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
-    private boolean isFirstLoad = false;
+    private String TAG = ThiredRecyclerBehavior.class.getSimpleName();
+    private boolean isFirstLoad = true;
+    private Context mContext;
     private int titleHeight = 0;
+
     public ThiredRecyclerBehavior() {
     }
 
     public ThiredRecyclerBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
     }
 
     @Override
@@ -28,20 +33,25 @@ public class ThiredRecyclerBehavior extends CoordinatorLayout.Behavior<RecyclerV
 
     @Override
     public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull RecyclerView child, @NonNull View dependency) {
-        FrameLayout frameLayout = (FrameLayout) dependency;
-        if (!isFirstLoad) {
-            isFirstLoad = true;
-            child.setY(frameLayout.getHeight());
+        if (isFirstLoad) {
+            isFirstLoad = false;
             for (int i = 0; i < parent.getChildCount(); i++) {
                 View view = parent.getChildAt(i);
-                if (view.getId() == R.id.title){
+                if (view.getId() == R.id.title) {
                     titleHeight = view.getHeight();
                     break;
                 }
             }
         }
-      /*  float frameLayoutTranslationY = frameLayout.getTranslationY();
-        child.setTranslationY(child.getTranslationY() + frameLayoutTranslationY);*/
+        FrameLayout frameLayout = (FrameLayout) dependency;
+        float translatyY = frameLayout.getHeight() - frameLayout.getTranslationY() / getHeaderOffset() * (frameLayout.getHeight() - titleHeight);
+        child.setTranslationY(translatyY);
         return true;
     }
+
+
+    private int getHeaderOffset() {
+        return mContext.getResources().getDimensionPixelOffset(R.dimen.header_offset);
+    }
+
 }
